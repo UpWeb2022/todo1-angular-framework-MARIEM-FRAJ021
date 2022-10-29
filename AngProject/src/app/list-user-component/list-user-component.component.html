@@ -1,0 +1,70 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box clearfix">
+                <input type="text" [(ngModel)]="category" class="form-control" placeholder="search by category" />
+                <div class="table-responsive">
+                    <table class="table user-list">
+                        <thead>
+                            <tr>
+                                <th><span>User</span></th>
+                                <th><span>idCustomer</span></th>
+                                <th><span>profession</span></th>
+                                <th><span>birthdate</span></th>
+                                <th class="text-center"><span>accountCategory</span></th>
+                                <th><span>Email</span></th>
+                                <th><span>password</span></th>
+
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of list">
+                                <div *ngIf="user.accountCategory==category || category==null">
+                                    <td>
+                                        <img src={{user.picture}} alt="">
+                                        <a href="#" class="user-link">{{user.firstName}} {{user.lastName}}</a>
+                                    </td>
+                                    <td>
+                                        {{user.idcustomer}}
+                                    </td>
+                                    <td>
+                                        "{{user.profession}}"
+                                    </td>
+                                    <td>
+                                        "{{user.birthDate}}"
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="label label-default">"{{user.accountCategory}}"</span>
+                                    </td>
+                                    <td>
+                                        <a href="#">"{{user.email}}"</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">"{{user.password}}"</a>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" [disabled]="user.accountCategory =='Admin'"
+                                            (click)="deleteUser(user)">delete</button>
+                                    </td>
+                                
+                                </div>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="pagination pull-right">
+                    <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
